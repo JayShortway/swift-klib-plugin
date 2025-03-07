@@ -16,6 +16,7 @@ abstract class SwiftKlibEntry @Inject constructor(
     val minMacos: Property<Int> = objects.property(Int::class.java)
     val minTvos: Property<Int> = objects.property(Int::class.java)
     val minWatchos: Property<Int> = objects.property(Int::class.java)
+    val defaultLocalization: Property<String> = objects.property(String::class.java)
 
     fun packageName(name: String) = packageName.set(name)
 }

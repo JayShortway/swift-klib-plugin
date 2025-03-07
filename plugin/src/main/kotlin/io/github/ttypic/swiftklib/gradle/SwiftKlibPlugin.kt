@@ -49,6 +49,7 @@ class SwiftKlibPlugin : Plugin<Project> {
                     entry.minMacos,
                     entry.minTvos,
                     entry.minWatchos,
+                    entry.defaultLocalization,
                 )
             }
         }

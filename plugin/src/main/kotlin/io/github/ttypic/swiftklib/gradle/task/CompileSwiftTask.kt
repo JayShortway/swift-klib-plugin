@@ -30,6 +30,7 @@ abstract class CompileSwiftTask @Inject constructor(
     @Optional @Input val minMacosProperty: Property<Int>,
     @Optional @Input val minTvosProperty: Property<Int>,
     @Optional @Input val minWatchosProperty: Property<Int>,
+    @Optional @Input val defaultLocalizationProperty: Property<String>,
 ) : DefaultTask() {
 
     @get:Internal
@@ -70,6 +71,7 @@ abstract class CompileSwiftTask @Inject constructor(
     private val minMacos get() = minMacosProperty.getOrElse(11)
     private val minTvos get() = minTvosProperty.getOrElse(13)
     private val minWatchos get() = minWatchosProperty.getOrElse(8)
+    private val defaultLocalization get() = defaultLocalizationProperty.orNull
 
     /**
      * Creates build directory or cleans up if it already exists
@@ -92,7 +94,7 @@ abstract class CompileSwiftTask @Inject constructor(
      */
     private fun createPackageSwift() {
         File(swiftBuildDir, "Package.swift")
-            .writeText(createPackageSwiftContents(cinteropName))
+            .writeText(createPackageSwiftContents(cinteropName, defaultLocalization))
     }
 
     private fun buildSwift(xcodeVersion: Int): SwiftBuildResult {

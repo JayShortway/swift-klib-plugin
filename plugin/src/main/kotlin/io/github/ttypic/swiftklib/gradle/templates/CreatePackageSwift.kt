@@ -9,7 +9,7 @@ internal fun createPackageSwiftContents(
 
     let package = Package(
         name: "$cinteropName",
-        ${defaultLocalization?.let { "defaultLocalization: \"$defaultLocalization\"" } ?: ""}
+        ${defaultLocalization?.let { "defaultLocalization: \"$defaultLocalization\"," } ?: ""}
         products: [
             .library(
                 name: "$cinteropName",
